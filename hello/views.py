@@ -9,7 +9,7 @@ import vamp
 
 # Create your views here.
 def index(request):
-    os.environ["VAMP_PATH"] = "/app/hello"
+    os.environ["VAMP_PATH"] = os.path.dirname(os.path.abspath(__file__))
     n = librosa.time_to_samples(3)
     return HttpResponse(str(n) + ' [' + ' '.join(vamp.list_plugins()) +
         '] path=' + (os.environ["PATH"] if "PATH" in os.environ else "none") +
